@@ -85,6 +85,8 @@ impl GlContext {
 
         let view = NSOpenGLView::alloc(nil)
             .initWithFrame_pixelFormat_(parent_view.frame(), pixel_format);
+        
+        NSView::setAutoresizingMask_(view, cocoa::appkit::NSViewWidthSizable | cocoa::appkit::NSViewHeightSizable);
 
         if view == nil {
             return Err(GlError::CreationFailed);
